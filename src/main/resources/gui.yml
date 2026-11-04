@@ -1,0 +1,335 @@
+# MirageAuction — gui.yml
+# Создано студией MirageStudio | Автор: sawervatoryy | https://discord.gg/dWPenZegK
+#
+# Слоты считаются с 0 (меню 54 слота = 6 рядов по 9). Диапазоны: "9-44".
+# Любую кнопку можно менять: material, name, lore, amount, glow, slot.
+
+# ───────────────────────── ГЛАВНОЕ МЕНЮ ─────────────────────────
+main:
+  # {category} {page} {pages} {total} {sort} {mode} {search} {balance}
+  title: "{gradb:AUCTION} {secondary}» {primary}{category}"
+  # Слоты с лотами (по умолчанию 4 ряда = 36 лотов на страницу)
+  lot-slots: ["9-44"]
+  empty-slot: 22
+  # Заполнять свободные слоты (кроме слотов лотов) декоративным стеклом темы
+  filler: true
+  search-none: "не задан"
+  selected-text: "{success}✔ Выбрано"
+  select-hint: "{accent}▸ {primary}ЛКМ {secondary}— открыть"
+  buttons:
+    prev:
+      slot: 45
+      material: ARROW
+      name: "{accent}« {primary}Назад"
+      lore:
+        - "{secondary}Страница: {primary}{page}{secondary}/{primary}{pages}"
+    next:
+      slot: 53
+      material: ARROW
+      name: "{primary}Вперёд {accent}»"
+      lore:
+        - "{secondary}Страница: {primary}{page}{secondary}/{primary}{pages}"
+    sort:
+      slot: 46
+      material: HOPPER
+      name: "{accent}Сортировка"
+      lore:
+        - "{secondary}Сейчас: {primary}{sort}"
+        - ""
+        - "{accent}▸ {primary}ЛКМ {secondary}— следующая"
+        - "{accent}▸ {primary}ПКМ {secondary}— предыдущая"
+    mode:
+      slot: 47
+      material: COMPARATOR
+      name: "{accent}Тип лотов"
+      lore:
+        - "{secondary}Сейчас: {primary}{mode}"
+        - ""
+        - "{accent}▸ {primary}ЛКМ {secondary}— переключить"
+    my-lots:
+      slot: 48
+      material: CHEST
+      name: "{accent}Мои лоты"
+      lore:
+        - "{secondary}Выставлено: {primary}{my_lots}{secondary}/{primary}{limit}"
+        - ""
+        - "{accent}▸ {primary}ЛКМ {secondary}— открыть"
+    info:
+      slot: 49
+      material: GOLD_INGOT
+      name: "{accent}Информация"
+      lore:
+        - "{secondary}Баланс: {primary}{balance}"
+        - "{secondary}Лотов на аукционе: {primary}{all_lots}"
+        - "{secondary}Найдено: {primary}{total}"
+        - ""
+        - "{secondary}Продать: {accent}/ah sell <цена>"
+        - "{secondary}Торги: {accent}/ah bid <старт> [выкуп]"
+    storage:
+      slot: 50
+      material: ENDER_CHEST
+      name: "{accent}Хранилище"
+      lore:
+        - "{secondary}Предметов: {primary}{storage}"
+        - ""
+        - "{accent}▸ {primary}ЛКМ {secondary}— открыть"
+    search:
+      slot: 51
+      material: OAK_SIGN
+      name: "{accent}Поиск"
+      lore:
+        - "{secondary}Запрос: {primary}{search}"
+        - ""
+        - "{accent}▸ {primary}ЛКМ {secondary}— ввести запрос"
+        - "{accent}▸ {primary}ПКМ {secondary}— сбросить"
+    refresh:
+      slot: 52
+      material: CLOCK
+      name: "{accent}Обновить"
+      lore:
+        - "{accent}▸ {primary}ЛКМ {secondary}— обновить список"
+    empty:
+      material: BARRIER
+      name: "{accent}Лотов не найдено"
+      lore:
+        - "{secondary}Выберите другую категорию или измените поиск."
+        - "{secondary}Выставить лот: {accent}/ah sell <цена>"
+
+sort-names:
+  NEWEST: "Сначала новые"
+  OLDEST: "Сначала старые"
+  PRICE_ASC: "Цена по возрастанию"
+  PRICE_DESC: "Цена по убыванию"
+  ENDING_SOON: "Скоро закончатся"
+
+mode-names:
+  ALL: "Все лоты"
+  FIXED: "Фиксированная цена"
+  BID: "Торги (ставки)"
+
+# ───────────────────────── КАТЕГОРИИ ─────────────────────────
+# Верхний ряд. Предмет попадает в ПЕРВУЮ подошедшую категорию (сверху вниз),
+# иначе — в категорию с fallback: true.
+# Маски материалов: ТОЧНОЕ_ИМЯ, ПРЕФИКС*, *СУФФИКС, *ЧАСТЬ*
+# Спец: @edible (еда), @block (блоки), @enchanted (зачарованные), @potion (зелья), @all
+# Плейсхолдеры: {count} {selected} {hint}
+categories:
+  all:
+    slot: 0
+    material: NETHER_STAR
+    name: "{accent}Все предметы"
+    lore: ["{secondary}Лотов: {primary}{count}", "", "{selected}", "{hint}"]
+    match: ["@all"]
+  weapons:
+    slot: 1
+    material: DIAMOND_SWORD
+    name: "{accent}Оружие"
+    lore: ["{secondary}Лотов: {primary}{count}", "", "{selected}", "{hint}"]
+    match: ["*_SWORD", "BOW", "CROSSBOW", "TRIDENT", "MACE", "ARROW", "SPECTRAL_ARROW"]
+  armor:
+    slot: 2
+    material: NETHERITE_CHESTPLATE
+    name: "{accent}Броня"
+    lore: ["{secondary}Лотов: {primary}{count}", "", "{selected}", "{hint}"]
+    match: ["*_HELMET", "*_CHESTPLATE", "*_LEGGINGS", "*_BOOTS", "ELYTRA", "SHIELD", "*_HORSE_ARMOR", "WOLF_ARMOR"]
+  tools:
+    slot: 3
+    material: DIAMOND_PICKAXE
+    name: "{accent}Инструменты"
+    lore: ["{secondary}Лотов: {primary}{count}", "", "{selected}", "{hint}"]
+    match: ["*_PICKAXE", "*_AXE", "*_SHOVEL", "*_HOE", "FISHING_ROD", "SHEARS", "FLINT_AND_STEEL", "COMPASS", "CLOCK", "SPYGLASS", "BRUSH", "*_BUCKET", "BUCKET"]
+  potions:
+    slot: 6
+    material: POTION
+    name: "{accent}Зелья"
+    lore: ["{secondary}Лотов: {primary}{count}", "", "{selected}", "{hint}"]
+    match: ["@potion", "EXPERIENCE_BOTTLE"]
+  food:
+    slot: 5
+    material: GOLDEN_APPLE
+    name: "{accent}Еда"
+    lore: ["{secondary}Лотов: {primary}{count}", "", "{selected}", "{hint}"]
+    match: ["@edible"]
+  resources:
+    slot: 7
+    material: DIAMOND
+    name: "{accent}Ресурсы"
+    lore: ["{secondary}Лотов: {primary}{count}", "", "{selected}", "{hint}"]
+    match: ["*_INGOT", "*_NUGGET", "RAW_*", "DIAMOND", "EMERALD", "COAL", "CHARCOAL", "LAPIS_LAZULI", "REDSTONE", "QUARTZ", "AMETHYST_SHARD", "NETHERITE_SCRAP", "BLAZE_ROD", "ENDER_PEARL", "ENDER_EYE", "GHAST_TEAR", "NETHER_STAR", "GUNPOWDER", "BONE", "STRING", "LEATHER", "FEATHER", "SLIME_BALL", "MAGMA_CREAM", "PRISMARINE_SHARD", "ECHO_SHARD", "HEART_OF_THE_SEA", "NAUTILUS_SHELL", "SHULKER_SHELL", "TOTEM_OF_UNDYING", "DRAGON_BREATH", "BLAZE_POWDER", "PHANTOM_MEMBRANE"]
+  blocks:
+    slot: 4
+    material: GRASS_BLOCK
+    name: "{accent}Блоки"
+    lore: ["{secondary}Лотов: {primary}{count}", "", "{selected}", "{hint}"]
+    match: ["@block"]
+  misc:
+    slot: 8
+    material: ENDER_CHEST
+    name: "{accent}Прочее"
+    lore: ["{secondary}Лотов: {primary}{count}", "", "{selected}", "{hint}"]
+    match: []
+    fallback: true
+
+# ───────────────────────── ЛОР ЛОТОВ ─────────────────────────
+# Добавляется под обычный лор предмета. Строка с пустым значением плейсхолдера
+# (например {buyout}, если выкупа нет) скрывается автоматически.
+# {seller} {price} {unit_price} {time} {category} {id} {amount}
+# {bid} {bidder} {bids} {buyout} {min_bid}
+lot-lore:
+  no-bids: "нет"
+  fixed:
+    - ""
+    - "{secondary}┃ {primary}Продавец: {accent}{seller}"
+    - "{secondary}┃ {primary}Цена: {accent}{price}"
+    - "{secondary}┃ {primary}За штуку: {accent}{unit_price}"
+    - "{secondary}┃ {primary}Осталось: {accent}{time}"
+    - "{secondary}┃ {primary}Категория: {accent}{category}"
+    - ""
+    - "{hints}"
+  bid:
+    - ""
+    - "{secondary}┃ {primary}Продавец: {accent}{seller}"
+    - "{secondary}┃ {primary}Старт: {accent}{start}"
+    - "{secondary}┃ {primary}Текущая ставка: {accent}{bid}"
+    - "{secondary}┃ {primary}Лидер: {accent}{bidder} {secondary}({bids})"
+    - "{secondary}┃ {primary}Выкуп: {accent}{buyout}"
+    - "{secondary}┃ {primary}До конца: {accent}{time}"
+    - ""
+    - "{hints}"
+  hints:
+    fixed:
+      - "{accent}▸ {primary}ЛКМ {secondary}— купить"
+    bid:
+      - "{accent}▸ {primary}ЛКМ {secondary}— сделать ставку"
+    own:
+      - "{accent}▸ {primary}ПКМ / Shift {secondary}— снять с продажи"
+    own-bid:
+      - "{secondary}Есть ставки — снять лот нельзя"
+
+# ───────────────────────── ПОДТВЕРЖДЕНИЕ ПОКУПКИ ─────────────────────────
+confirm:
+  title: "{accent}Подтверждение покупки"
+  item-slot: 13
+  buttons:
+    yes:
+      slot: 11
+      material: LIME_CONCRETE
+      name: "{success}✔ Подтвердить покупку"
+      lore:
+        - "{secondary}Предмет: {primary}{item}"
+        - "{secondary}Цена: {accent}{price}"
+    no:
+      slot: 15
+      material: RED_CONCRETE
+      name: "{error}✖ Отмена"
+      lore:
+        - "{secondary}Вернуться к списку лотов"
+
+# ───────────────────────── МЕНЮ ТОРГОВ ─────────────────────────
+bid:
+  title: "{accent}Торги {secondary}» {primary}№{id}"
+  item-slot: 4
+  quick-slots: [10, 11, 12]
+  buttons:
+    quick:
+      material: GOLD_NUGGET
+      name: "{accent}Поставить {primary}{amount}"
+      lore:
+        - "{secondary}Шаг ставки: {primary}{step}"
+        - "{secondary}Текущая: {primary}{bid}"
+        - ""
+        - "{accent}▸ {primary}ЛКМ {secondary}— сделать ставку"
+    custom:
+      slot: 14
+      material: OAK_SIGN
+      name: "{accent}Своя ставка"
+      lore:
+        - "{secondary}Минимум: {primary}{min_bid}"
+        - ""
+        - "{accent}▸ {primary}ЛКМ {secondary}— ввести сумму в чат"
+    buyout:
+      slot: 16
+      material: EMERALD
+      name: "{success}Выкупить сразу"
+      lore:
+        - "{secondary}Цена выкупа: {accent}{buyout}"
+        - ""
+        - "{accent}▸ {primary}ЛКМ {secondary}— выкупить лот"
+    back:
+      slot: 22
+      material: ARROW
+      name: "{primary}« Назад"
+      lore: []
+
+# ───────────────────────── МОИ ЛОТЫ ─────────────────────────
+my-lots:
+  title: "{accent}Мои лоты {secondary}» {primary}{count}"
+  lot-slots: ["0-44"]
+  buttons:
+    prev:
+      slot: 45
+      material: ARROW
+      name: "{accent}« {primary}Назад"
+      lore: ["{secondary}Страница: {primary}{page}{secondary}/{primary}{pages}"]
+    next:
+      slot: 53
+      material: ARROW
+      name: "{primary}Вперёд {accent}»"
+      lore: ["{secondary}Страница: {primary}{page}{secondary}/{primary}{pages}"]
+    back:
+      slot: 49
+      material: BARRIER
+      name: "{primary}« К аукциону"
+      lore: []
+    empty:
+      slot: 22
+      material: BARRIER
+      name: "{accent}У вас нет лотов"
+      lore: ["{secondary}Выставить: {accent}/ah sell <цена>"]
+
+# ───────────────────────── ХРАНИЛИЩЕ ─────────────────────────
+storage:
+  title: "{accent}Хранилище {secondary}» {primary}{count}"
+  lot-slots: ["0-44"]
+  item-lore:
+    - ""
+    - "{secondary}┃ {primary}Причина: {accent}{reason}"
+    - "{secondary}┃ {primary}Лежит: {accent}{age}"
+    - ""
+    - "{accent}▸ {primary}Клик {secondary}— забрать"
+  reasons:
+    EXPIRED: "Лот истёк"
+    CANCELLED: "Снято с продажи"
+    WON: "Выиграны торги"
+    PURCHASE: "Покупка"
+    REMOVED: "Удалено администратором"
+    OVERFLOW: "Не поместилось в инвентарь"
+  buttons:
+    prev:
+      slot: 45
+      material: ARROW
+      name: "{accent}« {primary}Назад"
+      lore: ["{secondary}Страница: {primary}{page}{secondary}/{primary}{pages}"]
+    next:
+      slot: 53
+      material: ARROW
+      name: "{primary}Вперёд {accent}»"
+      lore: ["{secondary}Страница: {primary}{page}{secondary}/{primary}{pages}"]
+    claim-all:
+      slot: 47
+      material: HOPPER
+      name: "{success}Забрать всё"
+      lore:
+        - "{secondary}Предметов: {primary}{count}"
+        - ""
+        - "{accent}▸ {primary}ЛКМ {secondary}— забрать всё, что поместится"
+    back:
+      slot: 49
+      material: BARRIER
+      name: "{primary}« К аукциону"
+      lore: []
+    empty:
+      slot: 22
+      material: BARRIER
+      name: "{accent}Хранилище пусто"
+      lore: ["{secondary}Сюда попадают истёкшие и снятые лоты,"," {secondary}а также выигранные торги."]

@@ -1,0 +1,41 @@
+name: MirageAuction
+version: 'v0.1.0'
+main: org.example.sawervatoryy.mirageAuction.MirageAuction
+api-version: '1.21'
+load: POSTWORLD
+authors: [sawervatoryy]
+website: https://discord.gg/dWPenZegK
+description: Профессиональный аукцион с категориями, ставками, хранилищем и анимациями. Создано студией MirageStudio.
+softdepend: [Vault, PlayerPoints]
+
+commands:
+  ah:
+    description: Аукцион MirageAuction
+    usage: /ah [sell|bid|search|storage|my|help]
+    aliases: [auction, au, ah]
+
+permissions:
+  mirageauction.use:
+    description: Открывать аукцион и покупать лоты
+    default: true
+  mirageauction.sell:
+    description: Выставлять лоты по фиксированной цене
+    default: true
+  mirageauction.bid.sell:
+    description: Выставлять лоты в режиме торгов
+    default: true
+  mirageauction.search:
+    description: Поиск по аукциону
+    default: true
+  mirageauction.storage:
+    description: Личное хранилище
+    default: true
+  mirageauction.admin:
+    description: Администрирование (reload, theme, remove)
+    default: op
+  mirageauction.bypass.limit:
+    description: Без лимита на количество лотов
+    default: op
+  mirageauction.limit.*:
+    description: Группы лимитов лотов (mirageauction.limit.<группа>)
+    default: false

@@ -1,0 +1,78 @@
+# MirageAuction — messages.yml
+# Создано студией MirageStudio | Автор: sawervatoryy | https://discord.gg/dWPenZegK
+# Плейсхолдеры зависят от сообщения: {item} {price} {amount} {player} и т.д.
+# {prefix} подставляется автоматически. Цветовые плейсхолдеры темы работают везде.
+
+prefix: "{gradb:AUCTION} {secondary}» "
+
+no-permission: "{prefix}{error}У вас нет прав на это действие."
+player-only: "{prefix}{error}Эта команда доступна только игрокам."
+economy-not-ready: "{prefix}{error}Экономика недоступна. Сообщите администратору."
+
+usage-sell: "{prefix}{primary}Использование: {accent}/ah sell <цена> [часы] {secondary}— например {primary}100k{secondary}, {primary}1kk{secondary}, {primary}2.5m"
+usage-bid: "{prefix}{primary}Использование: {accent}/ah bid <старт> [выкуп] [часы] {secondary}— торги со ставками"
+usage-search: "{prefix}{primary}Использование: {accent}/ah search <предмет> {secondary}(или {primary}@ник {secondary}— поиск по продавцу)"
+usage-remove: "{prefix}{primary}Использование: {accent}/ah remove <id лота>"
+
+invalid-price: "{prefix}{error}Неверная цена. {secondary}Примеры: {primary}100000{secondary}, {primary}100k{secondary}, {primary}1kk{secondary}, {primary}2.5m"
+invalid-hours: "{prefix}{error}Неверное время. {secondary}Укажите число часов от {primary}1 {secondary}до {primary}{max}"
+price-low: "{prefix}{error}Слишком маленькая цена. {secondary}Минимум: {accent}{min}"
+price-high: "{prefix}{error}Слишком большая цена. {secondary}Максимум: {accent}{max}"
+buyout-low: "{prefix}{error}Цена выкупа должна быть выше стартовой цены."
+hold-item: "{prefix}{error}Возьмите предмет, который хотите продать, в руку."
+blacklisted: "{prefix}{error}Этот предмет нельзя выставить на аукцион."
+limit-reached: "{prefix}{error}Вы достигли лимита лотов: {accent}{limit}"
+fee-paid: "{prefix}{secondary}Комиссия за выставление: {accent}{fee}"
+
+listed: "{prefix}{primary}Лот {accent}{item} {primary}выставлен за {accent}{price} {secondary}на {primary}{hours} ч. {secondary}(№{id})"
+listed-bid: "{prefix}{primary}Торги {accent}{item} {primary}открыты! Старт: {accent}{price}{secondary}, выкуп: {primary}{buyout}{secondary}, {primary}{hours} ч. {secondary}(№{id})"
+listed-broadcast: "{prefix}{accent}{player} {primary}выставил {accent}{item} {primary}за {accent}{price} {secondary}— {primary}/ah"
+listed-broadcast-bid: "{prefix}{accent}{player} {primary}открыл торги на {accent}{item} {primary}со старта {accent}{price} {secondary}— {primary}/ah"
+
+lot-not-found: "{prefix}{error}Лот не найден — возможно, он уже продан или снят."
+lot-own: "{prefix}{error}Это ваш лот."
+not-owner: "{prefix}{error}Это не ваш лот."
+cancel-has-bids: "{prefix}{error}На этот лот уже сделаны ставки — снять его нельзя."
+cancelled: "{prefix}{primary}Лот {accent}{item} {primary}снят с продажи."
+no-money: "{prefix}{error}Недостаточно средств. {secondary}Нужно: {accent}{price}"
+
+bought: "{prefix}{primary}Вы купили {accent}{item} {primary}за {accent}{price}{primary}."
+sold: "{prefix}{primary}Ваш лот {accent}{item} {primary}купил {accent}{buyer} {primary}за {accent}{price}{secondary}. Налог: {primary}{tax}{secondary}, вы получили: {accent}{net}"
+
+bid-placed: "{prefix}{primary}Ставка {accent}{amount} {primary}на {accent}{item} {primary}принята!"
+bid-too-low: "{prefix}{error}Ставка слишком мала. {secondary}Минимум: {accent}{min}"
+bid-prompt: "{prefix}{primary}Введите сумму ставки в чат {secondary}(минимум {accent}{min}{secondary}). Для отмены: {primary}отмена"
+bid-received: "{prefix}{primary}На ваш лот {accent}{item} {primary}поставил {accent}{amount} {primary}игрок {accent}{player}{primary}."
+outbid: "{prefix}{error}Вашу ставку на {item} перебил {player}. {secondary}Деньги ({accent}{amount}{secondary}) возвращены."
+bid-refunded: "{prefix}{secondary}Торги на {primary}{item} {secondary}отменены, ставка {accent}{amount} {secondary}возвращена."
+auction-won: "{prefix}{primary}Вы выиграли торги на {accent}{item} {primary}за {accent}{price}{primary}! {secondary}Предмет в инвентаре или в {primary}/ah storage"
+lot-expired: "{prefix}{secondary}Лот {primary}{item} {secondary}истёк. Предмет ждёт вас в {primary}/ah storage"
+
+storage-notify: "{prefix}{primary}В вашем хранилище предметов: {accent}{count}{primary}. {secondary}Откройте: {primary}/ah storage"
+storage-claimed: "{prefix}{primary}Вы забрали {accent}{item}{primary}."
+storage-claimed-all: "{prefix}{primary}Забрано предметов: {accent}{count}{primary}."
+inventory-full: "{prefix}{error}Недостаточно места в инвентаре."
+
+search-prompt: "{prefix}{primary}Введите название предмета в чат {secondary}(или {primary}@ник {secondary}продавца). Для отмены: {primary}отмена"
+search-cleared: "{prefix}{primary}Поиск сброшен."
+input-cancelled: "{prefix}{secondary}Ввод отменён."
+input-timeout: "{prefix}{secondary}Время ввода истекло."
+
+reload-done: "{prefix}{primary}Конфигурация перезагружена."
+theme-list: "{prefix}{primary}Темы: {accent}{themes} {secondary}| активная: {primary}{active}"
+theme-changed: "{prefix}{primary}Тема {accent}{theme} {primary}применена."
+theme-unknown: "{prefix}{error}Такой темы нет. {secondary}Доступны: {accent}{themes}"
+removed-admin: "{prefix}{primary}Лот №{id} ({accent}{item}{primary}) удалён, предмет отправлен продавцу в хранилище."
+
+help:
+  - "{prefix}{primary}Команды аукциона:"
+  - "{secondary}  » {accent}/ah {secondary}— открыть аукцион"
+  - "{secondary}  » {accent}/ah sell <цена> [часы] {secondary}— продать предмет из руки"
+  - "{secondary}  » {accent}/ah bid <старт> [выкуп] [часы] {secondary}— торги (ставки)"
+  - "{secondary}  » {accent}/ah search <предмет> {secondary}— поиск лотов"
+  - "{secondary}  » {accent}/ah my {secondary}— мои лоты"
+  - "{secondary}  » {accent}/ah storage {secondary}— хранилище"
+  - "{secondary}  » {accent}/ah reload | theme | remove {secondary}— для администраторов"
+  - "{secondary}Цена: {primary}100000{secondary}, {primary}100k{secondary}, {primary}1kk{secondary}, {primary}2.5m"
+  - "{secondary}MirageAuction — студия {primary}MirageStudio {secondary}| автор {primary}sawervatoryy"
+  - "{secondary}Discord: {accent}https://discord.gg/dWPenZegK"

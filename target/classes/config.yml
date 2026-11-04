@@ -1,0 +1,278 @@
+# ╔══════════════════════════════════════════════════════════════╗
+# ║                    MirageAuction — config.yml                ║
+# ║  Создано студией MirageStudio | Автор: sawervatoryy          ║
+# ║  Discord: https://discord.gg/dWPenZegK                       ║
+# ╚══════════════════════════════════════════════════════════════╝
+#
+# Файлы плагина:
+#   config.yml   — настройки, темы, анимации, звуки (этот файл)
+#   messages.yml — все сообщения чата
+#   gui.yml      — меню: кнопки, категории, лор лотов, заголовки
+#
+# Цвета везде: &a-&f, &l, &#RRGGBB, <gradient:#A:#B>текст</gradient>,
+# плейсхолдеры темы {primary} {secondary} {accent} {dark} {success} {error}
+# и градиент темы {grad:ТЕКСТ} / {gradb:ТЕКСТ} (жирный).
+
+# ───────────────────────── ЦВЕТОВАЯ ТЕМА ─────────────────────────
+# Активная тема. Можно менять командой /ah theme <имя> (без перезапуска).
+theme: "mirage"
+
+# Любая строка темы становится плейсхолдером {ключ}. Создавайте свои темы!
+# pane-accent / pane-primary / filler — материалы декоративных стёкол.
+themes:
+  mirage:
+    primary: "&f"
+    secondary: "&7"
+    accent: "&#FA4249"
+    dark: "&#C80000"
+    success: "&#7CE38B"
+    error: "&#FA4249"
+    gradient: ["#FA4249", "#C80000"]
+    pane-primary: WHITE_STAINED_GLASS_PANE
+    pane-accent: RED_STAINED_GLASS_PANE
+    filler: BLACK_STAINED_GLASS_PANE
+  purple:
+    primary: "&f"
+    secondary: "&7"
+    accent: "&#B36BD7"
+    dark: "&#A12FCA"
+    success: "&#A8F0B5"
+    error: "&#FF6B8B"
+    gradient: ["#B36BD7", "#A12FCA", "#B01DEE"]
+    pane-primary: WHITE_STAINED_GLASS_PANE
+    pane-accent: PURPLE_STAINED_GLASS_PANE
+    filler: BLACK_STAINED_GLASS_PANE
+  pastel:
+    primary: "&f"
+    secondary: "&7"
+    accent: "&#DFFFB2"
+    dark: "&#E9A987"
+    success: "&#DFFFB2"
+    error: "&#E9A987"
+    gradient: ["#DFFFB2", "#E9A987"]
+    pane-primary: WHITE_STAINED_GLASS_PANE
+    pane-accent: LIME_STAINED_GLASS_PANE
+    filler: GRAY_STAINED_GLASS_PANE
+  ocean:
+    primary: "&f"
+    secondary: "&7"
+    accent: "&#2EC4FF"
+    dark: "&#0077B6"
+    success: "&#7CE3C0"
+    error: "&#FF6B6B"
+    gradient: ["#2EC4FF", "#0077B6"]
+    pane-primary: WHITE_STAINED_GLASS_PANE
+    pane-accent: LIGHT_BLUE_STAINED_GLASS_PANE
+    filler: BLUE_STAINED_GLASS_PANE
+  gold:
+    primary: "&f"
+    secondary: "&7"
+    accent: "&#FFD166"
+    dark: "&#F4A261"
+    success: "&#B7E4A1"
+    error: "&#EF6F6C"
+    gradient: ["#FFD166", "#F4A261"]
+    pane-primary: WHITE_STAINED_GLASS_PANE
+    pane-accent: YELLOW_STAINED_GLASS_PANE
+    filler: BLACK_STAINED_GLASS_PANE
+  emerald:
+    primary: "&f"
+    secondary: "&7"
+    accent: "&#2ECC71"
+    dark: "&#1E8449"
+    success: "&#2ECC71"
+    error: "&#E74C3C"
+    gradient: ["#2ECC71", "#1E8449"]
+    pane-primary: WHITE_STAINED_GLASS_PANE
+    pane-accent: GREEN_STAINED_GLASS_PANE
+    filler: BLACK_STAINED_GLASS_PANE
+  sakura:
+    primary: "&f"
+    secondary: "&7"
+    accent: "&#FF8FAB"
+    dark: "&#FB6F92"
+    success: "&#CDEAC0"
+    error: "&#FB6F92"
+    gradient: ["#FF8FAB", "#FB6F92"]
+    pane-primary: WHITE_STAINED_GLASS_PANE
+    pane-accent: PINK_STAINED_GLASS_PANE
+    filler: GRAY_STAINED_GLASS_PANE
+  mono:
+    primary: "&f"
+    secondary: "&8"
+    accent: "&7"
+    dark: "&8"
+    success: "&a"
+    error: "&c"
+    gradient: ["#FFFFFF", "#7A7A7A"]
+    pane-primary: WHITE_STAINED_GLASS_PANE
+    pane-accent: LIGHT_GRAY_STAINED_GLASS_PANE
+    filler: BLACK_STAINED_GLASS_PANE
+
+# ───────────────────────── ЭКОНОМИКА ─────────────────────────
+economy:
+  # VAULT — любой экономический плагин через Vault (EssentialsX, CMI, ...)
+  # PLAYERPOINTS — валюта PlayerPoints (целые числа)
+  provider: VAULT
+  # Налог с продажи (% от цены, удерживается с продавца)
+  tax-percent: 5
+  # Комиссия за выставление (% от цены, платится сразу при /ah sell)
+  listing-fee-percent: 0
+
+# ───────────────────────── ЛИМИТЫ ─────────────────────────
+limits:
+  min-price: 1
+  max-price: 1000000000000
+  # Максимум одновременно выставленных лотов
+  default-lots: 10
+  # Лимиты по правам: mirageauction.limit.<группа>
+  groups:
+    vip: 20
+    premium: 30
+    elite: 50
+
+# Длительность лотов (часы)
+duration:
+  sell:
+    default-hours: 24
+    max-hours: 72
+  bid:
+    default-hours: 12
+    max-hours: 48
+
+# ───────────────────────── РЕЖИМ СТАВОК ─────────────────────────
+bid:
+  # Минимальный шаг следующей ставки = max(flat, текущая ставка * percent%)
+  min-step-percent: 5
+  min-step-flat: 1
+  # Быстрые ставки в меню торгов (кратно шагу), слоты — gui.yml -> bid.quick-slots
+  quick-raises: [1, 3, 5]
+  # Защита от «снайпинга»: ставка в последние секунды продлевает торги
+  anti-snipe:
+    enabled: true
+    window-seconds: 60
+    extend-seconds: 60
+    max-extensions: 10
+  # Можно ли снять лот, на который уже есть ставки
+  allow-cancel-with-bids: false
+
+# ───────────────────────── ЧЁРНЫЙ СПИСОК ─────────────────────────
+blacklist:
+  materials:
+    - BEDROCK
+    - BARRIER
+    - COMMAND_BLOCK
+    - CHAIN_COMMAND_BLOCK
+    - REPEATING_COMMAND_BLOCK
+    - STRUCTURE_BLOCK
+    - STRUCTURE_VOID
+    - JIGSAW
+    - DEBUG_STICK
+    - LIGHT
+    - KNOWLEDGE_BOOK
+  # Запрет по тексту в названии / лоре (без учёта регистра)
+  name-contains: []
+  lore-contains: []
+
+# ───────────────────────── ДОСТАВКА / ОБЪЯВЛЕНИЯ ─────────────────────────
+delivery:
+  # Купленные/снятые предметы сразу в инвентарь (остаток — в хранилище)
+  to-inventory-first: true
+
+broadcast:
+  # Объявлять в чат о новых лотах
+  new-lot: false
+  # Только если цена не ниже
+  min-price: 100000
+
+chat-input:
+  timeout-seconds: 30
+  cancel-words: ["cancel", "отмена", "0"]
+
+# ───────────────────────── ФОРМАТ ЦЕН И ВРЕМЕНИ ─────────────────────────
+format:
+  # FULL — 1 500 000, SHORT — 1.5kk
+  style: FULL
+  currency-symbol: "$"
+  # BEFORE | AFTER
+  symbol-position: BEFORE
+  group-separator: " "
+  short-units: ["", "k", "kk", "kkk", "kkkk"]
+  # Суффиксы при вводе цены: /ah sell 100k, 1kk, 2.5м ...
+  suffixes:
+    k: 1000
+    к: 1000
+    тыс: 1000
+    kk: 1000000
+    кк: 1000000
+    m: 1000000
+    м: 1000000
+    млн: 1000000
+    kkk: 1000000000
+    ккк: 1000000000
+    b: 1000000000
+    млрд: 1000000000
+    kkkk: 1000000000000
+    t: 1000000000000
+  time-units:
+    d: "д"
+    h: "ч"
+    m: "м"
+    s: "с"
+
+# ───────────────────────── АНИМАЦИИ ─────────────────────────
+animation:
+  enabled: true
+  # Появление меню при открытии
+  open:
+    # CASCADE | WAVE | CENTER | SPIRAL | RANDOM | SNAKE | COLUMNS
+    style: WAVE
+    step-ticks: 1
+    per-step: 3
+  # Анимация при смене категории / обновлении
+  switch:
+    enabled: true
+    style: CASCADE
+    step-ticks: 1
+    per-step: 9
+  # «Печатающийся» заголовок (цвета берутся из градиента темы)
+  title:
+    enabled: true
+    text: "AUCTION"
+    step-ticks: 2
+    bold: true
+  # Тон звука появления предметов растёт от min к max
+  reveal-sound-pitch:
+    min: 0.7
+    max: 2.0
+
+# ───────────────────────── GUI ─────────────────────────
+gui:
+  # Защита от спама кликами
+  click-cooldown-ms: 120
+  # Обновление таймеров/цен в открытых меню (тики)
+  auto-refresh-ticks: 20
+  # NEWEST | OLDEST | PRICE_ASC | PRICE_DESC | ENDING_SOON
+  default-sort: NEWEST
+
+# ───────────────────────── ХРАНЕНИЕ ─────────────────────────
+storage:
+  # Данные лежат в plugins/MirageAuction/data.yml
+  type: YAML
+  autosave-seconds: 60
+  # Как часто проверять истёкшие лоты (тики)
+  tick-interval-ticks: 20
+
+# ───────────────────────── ЗВУКИ ─────────────────────────
+# Формат: "ключ;громкость;тон". "none" — отключить.
+sounds:
+  enabled: true
+  open: "minecraft:block.ender_chest.open;0.6;1.4"
+  click: "minecraft:ui.button.click;0.6;1.2"
+  page: "minecraft:item.book.page_turn;0.7;1.0"
+  reveal: "minecraft:block.note_block.hat;0.35;1.0"
+  reveal-done: "minecraft:block.amethyst_block.chime;0.6;1.4"
+  success: "minecraft:entity.player.levelup;0.6;1.6"
+  error: "minecraft:entity.villager.no;0.7;1.0"
+  bid: "minecraft:block.note_block.bell;0.8;1.3"
+  claim: "minecraft:entity.item.pickup;0.7;1.1"
